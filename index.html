@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Checklist Item Definitions - Annotator Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .navigation {
+            background: #f8f9fa;
+            padding: 20px 40px;
+            border-bottom: 1px solid #dee2e6;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .nav-link {
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-link i {
+            font-size: 0.9em;
+        }
+
+        /* Color scheme for groups based on yml file */
+        .group-basic { background: #e3f2fd; color: #1976d2; border: 2px solid #1976d2; }
+        .group-legal { background: #e8f5e9; color: #388e3c; border: 2px solid #388e3c; }
+        .group-judge { background: #e0f2f1; color: #00796b; border: 2px solid #00796b; }
+        .group-related { background: #fff3e0; color: #f57c00; border: 2px solid #f57c00; }
+        .group-filings { background: #ffebee; color: #d32f2f; border: 2px solid #d32f2f; }
+        .group-decrees { background: #fffde7; color: #f9a825; border: 2px solid #f9a825; }
+        .group-settlements { background: #e0f2f1; color: #00796b; border: 2px solid #00796b; }
+        .group-monitoring { background: #fff3e0; color: #f57c00; border: 2px solid #f57c00; }
+        .group-context { background: #e3f2fd; color: #1976d2; border: 2px solid #1976d2; }
+
+        .nav-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            padding: 30px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        /* Section background colors */
+        .section-basic { background: linear-gradient(to right, #e3f2fd 0%, #f5f5f5 100%); }
+        .section-legal { background: linear-gradient(to right, #e8f5e9 0%, #f5f5f5 100%); }
+        .section-judge { background: linear-gradient(to right, #e0f2f1 0%, #f5f5f5 100%); }
+        .section-related { background: linear-gradient(to right, #fff3e0 0%, #f5f5f5 100%); }
+        .section-filings { background: linear-gradient(to right, #ffebee 0%, #f5f5f5 100%); }
+        .section-decrees { background: linear-gradient(to right, #fffde7 0%, #f5f5f5 100%); }
+        .section-settlements { background: linear-gradient(to right, #e0f2f1 0%, #f5f5f5 100%); }
+        .section-monitoring { background: linear-gradient(to right, #fff3e0 0%, #f5f5f5 100%); }
+        .section-context { background: linear-gradient(to right, #e3f2fd 0%, #f5f5f5 100%); }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid;
+        }
+
+        .section-basic .section-header { border-color: #1976d2; }
+        .section-legal .section-header { border-color: #388e3c; }
+        .section-judge .section-header { border-color: #00796b; }
+        .section-related .section-header { border-color: #f57c00; }
+        .section-filings .section-header { border-color: #d32f2f; }
+        .section-decrees .section-header { border-color: #f9a825; }
+        .section-settlements .section-header { border-color: #00796b; }
+        .section-monitoring .section-header { border-color: #f57c00; }
+        .section-context .section-header { border-color: #1976d2; }
+
+        .section-icon {
+            font-size: 2em;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .section-basic .section-icon { color: #1976d2; }
+        .section-legal .section-icon { color: #388e3c; }
+        .section-judge .section-icon { color: #00796b; }
+        .section-related .section-icon { color: #f57c00; }
+        .section-filings .section-icon { color: #d32f2f; }
+        .section-decrees .section-icon { color: #f9a825; }
+        .section-settlements .section-icon { color: #00796b; }
+        .section-monitoring .section-icon { color: #f57c00; }
+        .section-context .section-icon { color: #1976d2; }
+
+        .section h2 {
+            font-size: 1.8em;
+            color: #2c3e50;
+        }
+
+        .item {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .item h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .item-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+
+        .section-basic .item-number { background: #1976d2; color: white; }
+        .section-legal .item-number { background: #388e3c; color: white; }
+        .section-judge .item-number { background: #00796b; color: white; }
+        .section-related .item-number { background: #f57c00; color: white; }
+        .section-filings .item-number { background: #d32f2f; color: white; }
+        .section-decrees .item-number { background: #f9a825; color: white; }
+        .section-settlements .item-number { background: #00796b; color: white; }
+        .section-monitoring .item-number { background: #f57c00; color: white; }
+        .section-context .item-number { background: #1976d2; color: white; }
+
+        .field {
+            margin-bottom: 15px;
+        }
+
+        .field-label {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .field-label i {
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        .field-content {
+            color: #6c757d;
+            padding-left: 20px;
+        }
+
+        .field-content ul {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+
+        .field-content li {
+            margin-bottom: 5px;
+        }
+
+        .example-box {
+            background: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+        }
+
+        .format-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .tips-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 8px;
+        }
+
+        .tips-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tip-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tip-card h4 {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glossary {
+            background: #f8f9fa;
+            padding: 40px;
+            margin-top: 30px;
+            border-radius: 8px;
+        }
+
+        .glossary h2 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .glossary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .glossary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+
+        .glossary-term {
+            font-weight: bold;
+            color: #495057;
+            margin-bottom: 5px;
+        }
+
+        .glossary-definition {
+            color: #6c757d;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .navigation {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-balance-scale"></i> Legal Checklist Item Definitions</h1>
+            <p>Comprehensive Annotator Guide for Legal Case Summary Analysis</p>
+        </header>
+
+        <nav class="navigation">
+            <div class="nav-links">
+                <a href="#basic-info" class="nav-link group-basic"><i class="fas fa-folder"></i> Basic Case Info</a>
+                <a href="#legal-foundation" class="nav-link group-legal"><i class="fas fa-gavel"></i> Legal Foundation</a>
+                <a href="#judge-info" class="nav-link group-judge"><i class="fas fa-user-tie"></i> Judge Info</a>
+                <a href="#related-cases" class="nav-link group-related"><i class="fas fa-link"></i> Related Cases</a>
+                <a href="#filings" class="nav-link group-filings"><i class="fas fa-file-lines"></i> Filings & Proceedings</a>
+                <a href="#decrees" class="nav-link group-decrees"><i class="fas fa-scroll"></i> Decrees</a>
+                <a href="#settlements" class="nav-link group-settlements"><i class="fas fa-handshake"></i> Settlements</a>
+                <a href="#monitoring" class="nav-link group-monitoring"><i class="fas fa-user-shield"></i> Monitoring</a>
+                <a href="#context" class="nav-link group-context"><i class="fas fa-file-text"></i> Context</a>
+            </div>
+        </nav>
+
+        <div class="content">
+            <!-- Basic Case Information Section -->
+            <section id="basic-info" class="section section-basic">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-folder"></i></div>
+                    <h2>Basic Case Information</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">1</span> Filing Date</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">When the lawsuit was first started</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">The date when the plaintiff first submitted the lawsuit to the court. This starts the legal process.</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-exclamation-triangle"></i> Note:</div>
+                        <div class="field-content">This is different from other dates like trial dates or settlement dates.</div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">2</span> Who are the Parties</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Detailed descriptions of everyone involved in the lawsuit</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            Identify each plaintiff (person suing) and defendant (person being sued) separately. Include:
+                            <ul>
+                                <li>Names if available</li>
+                                <li>Relevant titles or positions</li>
+                                <li>Organization affiliations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="format-box">
+                        <strong>Required format:</strong><br>
+                        • "Plaintiff: [description]"<br>
+                        • "Defendant: [description]"
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong><br>
+                        • "Plaintiff: Jane Doe, former employee"<br>
+                        • "Defendant: ABC Corporation"<br>
+                        • "Defendant: John Smith, CEO of ABC Corporation"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">3</span> Class Action or Individual Plaintiffs</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Whether one person is suing or a group of people with similar claims</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            <ul>
+                                <li><strong>Individual plaintiffs:</strong> One or more specific people suing on their own behalf</li>
+                                <li><strong>Class action:</strong> One person suing on behalf of a large group with similar complaints</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="format-box">
+                        <strong>Required format:</strong><br>
+                        • "Plaintiffs: Class Action" OR<br>
+                        • "Plaintiffs: Individual, described as [description]"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">4</span> Type of Counsel</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">What kind of lawyers represent the parties</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            Different types of legal representation:
+                            <ul>
+                                <li><strong>Private counsel:</strong> Lawyers hired and paid by the party</li>
+                                <li><strong>Legal services:</strong> Non-profit legal aid organizations</li>
+                                <li><strong>ACLU:</strong> American Civil Liberties Union</li>
+                                <li><strong>Public defender:</strong> Government-provided lawyer for criminal defendants</li>
+                                <li><strong>Pro se:</strong> Representing themselves without a lawyer</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Legal Foundation Section -->
+            <section id="legal-foundation" class="section section-legal">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-gavel"></i></div>
+                    <h2>Legal Foundation</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">5</span> Cause of Action</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The legal reason why someone is suing</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            This is the specific law or legal principle that the plaintiff says was violated. It could be:
+                            <ul>
+                                <li>A federal law (like "42 USC 1983" - civil rights violations)</li>
+                                <li>A constitutional right</li>
+                                <li>A common law principle</li>
+                                <li>A specific legal doctrine (like "Ex Parte Young")</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Examples:</strong><br>
+                        • "Violation of 42 USC 1983 (civil rights)"<br>
+                        • "Breach of contract"<br>
+                        • "Negligence"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">6</span> Statutory or Constitutional Basis for the Case</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The specific laws or constitutional provisions allegedly violated</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            Cases must be based on either:
+                            <ul>
+                                <li><strong>Statutes:</strong> Written laws passed by Congress or state legislatures</li>
+                                <li><strong>Constitutional provisions:</strong> Specific parts of the U.S. Constitution</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Examples:</strong><br>
+                        • "Violation of Title VII of the Civil Rights Act"<br>
+                        • "Fourteenth Amendment's Equal Protection Clause"<br>
+                        • "First Amendment free speech violation"<br>
+                        • "Commerce Clause"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">7</span> Remedy Sought</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">What the plaintiff wants the court to do</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            The specific outcome or relief the plaintiff is requesting:
+                            <ul>
+                                <li><strong>Monetary damages:</strong> Money to compensate for harm</li>
+                                <li><strong>Injunctive relief:</strong> Court order to stop or start doing something</li>
+                                <li><strong>Declaratory judgment:</strong> Court statement about legal rights</li>
+                                <li><strong>Specific performance:</strong> Order to fulfill a contract</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Judge Information Section -->
+            <section id="judge-info" class="section section-judge">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-user-tie"></i></div>
+                    <h2>Judge Information</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">8</span> First and Last Name of Judge</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The judge's name handling the case</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">Extract the judge's full name if available. If only partial name is given, extract what's available.</div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Examples:</strong><br>
+                        • Full name: "Judge Sarah Johnson"<br>
+                        • Last name only: "Judge Johnson"
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Cases Section -->
+            <section id="related-cases" class="section section-related">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-link"></i></div>
+                    <h2>Related Cases</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">9</span> Consolidated Cases Noted</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Multiple related lawsuits combined into one case</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">Sometimes courts combine similar cases to handle them more efficiently. Look for mentions of cases being "consolidated," "joined," or case numbers being listed together.</div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Cases 19-cv-1234 and 19-cv-5678 were consolidated"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">10</span> Related Cases Listed by Their Case Code Number</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Other lawsuits mentioned with their official case numbers</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">Look for references to other cases using their court-assigned numbers (like "20-cv-1234").</div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Related case: Smith v. Jones, 19-cv-5678"
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filings and Proceedings Section -->
+            <section id="filings" class="section section-filings">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-file-lines"></i></div>
+                    <h2>Filings and Proceedings</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">11</span> Note Important Filings</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Significant documents submitted to the court</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            Important filings are formal requests or documents that significantly affect the case:
+                            <ul>
+                                <li>Motions for temporary restraining orders (immediate stop to something)</li>
+                                <li>Preliminary injunctions (temporary court orders)</li>
+                                <li>Motions to dismiss (asking to end the case)</li>
+                                <li>Motions for summary judgment (asking to decide without trial)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">12</span> Court Rulings</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Decisions the judge made on important requests (motions) during the case</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            During a lawsuit, parties ask the court to make various decisions through "motions." Look for rulings on:
+                            <ul>
+                                <li>Motion to dismiss (asking to throw out the case)</li>
+                                <li>Motion for summary judgment (asking to decide without trial)</li>
+                                <li>Motion for preliminary injunction (asking for immediate action)</li>
+                                <li>Motion for class certification (asking to proceed as class action)</li>
+                                <li>Motion for attorneys' fees</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-exclamation-triangle"></i> Important:</div>
+                        <div class="field-content">Do NOT include amended complaints or statements of interest - these aren't rulings.</div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">13</span> All Reported Opinions Cited with Shortened Bluebook Citation</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Legal citations in a specific format (like "2020 WL 4218003")</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">Courts often reference previous legal decisions. These references use a standardized citation format called "Bluebook." You're looking for these citation numbers, which typically include a year and a series of numbers/letters.</div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example format:</strong><br>
+                        • "2020 WL 4218003" (from Westlaw database)<br>
+                        • "123 F.3d 456" (from Federal Reporter)
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">14</span> Trials</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Information about the actual trial proceedings</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            Details about the trial itself:
+                            <ul>
+                                <li>Trial dates or scheduling</li>
+                                <li>Trial outcomes (verdict)</li>
+                                <li>Jury selection</li>
+                                <li>Trial motions or rulings during trial</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">15</span> Appeal</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Any mention of a party asking a higher court to review a lower court's decision</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">When someone loses in court, they can ask a higher court to review the decision. This is called an appeal. Note WHO appealed and TO WHICH court.</div>
+                    </div>
+                    <div class="format-box">
+                        <strong>Required format:</strong> "Appeal: [parties] appealed to [court]"
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Appeal: Defendant Johnson appealed to the Ninth Circuit Court of Appeals"
+                    </div>
+                </div>
+            </section>
+
+            <!-- Decrees Section -->
+            <section id="decrees" class="section section-decrees">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-scroll"></i></div>
+                    <h2>Decrees</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">16</span> Dates of All Decrees</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Dates when the court issued formal orders (decrees)</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">A decree is a formal court order. Note WHEN each decree was issued.</div>
+                    </div>
+                    <div class="format-box">
+                        <strong>Required format:</strong> "[date]: [decree description]"
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "January 10, 2023: Consent decree entered"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">17</span> Significant Terms of Decrees</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The main requirements in court orders</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            What exactly is the defendant ordered to do? Focus on the substance of the court's requirements:
+                            <ul>
+                                <li>Actions they must take</li>
+                                <li>Things they must stop doing</li>
+                                <li>Changes they must implement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Defendant must implement new hiring practices and provide quarterly reports"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">18</span> How Long Decrees Will Last</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Duration or expiration dates for court orders</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            Court orders sometimes have time limits. Look for phrases like:
+                            <ul>
+                                <li>"for a period of 5 years"</li>
+                                <li>"until December 31, 2025"</li>
+                                <li>"indefinitely"</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="format-box">
+                        <strong>Required format:</strong> "[decree]: [duration]"
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Consent decree: 3 years"
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settlements Section -->
+            <section id="settlements" class="section section-settlements">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-handshake"></i></div>
+                    <h2>Settlements</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">19</span> Date of Settlement</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The specific date when parties agreed to resolve the case</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">The date when both sides formally agreed to end the lawsuit through negotiation rather than trial.</div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Settlement reached on March 15, 2023"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">20</span> Significant Terms of Settlement</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The main agreements in the settlement</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">Similar to decree terms, but these are negotiated agreements. What did each side agree to do?</div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Company agrees to pay $1 million and change workplace policies"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">21</span> How Long Settlement Will Last</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Duration of settlement agreement obligations</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">Similar to decree duration, but for settlements. How long must parties follow the settlement terms?</div>
+                    </div>
+                    <div class="format-box">
+                        <strong>Required format:</strong> "[settlement]: [duration]"
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Settlement agreement: 18 months"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">22</span> Whether the Settlement is Court-enforced or Not</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">If the court retains power to enforce the settlement</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            <ul>
+                                <li><strong>Court-enforced (Yes):</strong> The court keeps jurisdiction to make sure parties follow the settlement</li>
+                                <li><strong>Not court-enforced (No):</strong> The settlement is a private agreement; violations would require a new lawsuit</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="format-box">
+                        <strong>Required format:</strong> "Yes" or "No"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">23</span> Disputes Over Settlement Enforcement</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Problems with parties following through on settlement agreements</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            After settling, sometimes one side doesn't do what they promised. Look for mentions of:
+                            <ul>
+                                <li>Violation of settlement terms</li>
+                                <li>Motions to enforce settlement</li>
+                                <li>Disputes about what the settlement requires</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Monitoring Section -->
+            <section id="monitoring" class="section section-monitoring">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-user-shield"></i></div>
+                    <h2>Monitoring</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">24</span> Name of the Monitor</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The name of any court-appointed monitor</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">If a monitor was appointed to oversee compliance, extract their name.</div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example:</strong> "Monitor appointed: John Smith"
+                    </div>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">25</span> Monitor Reports</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">Reports from a court-appointed person checking compliance</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            Courts sometimes appoint an independent person (monitor) to check if defendants are following court orders. Look for mentions of:
+                            <ul>
+                                <li>Compliance reports</li>
+                                <li>Monitor findings</li>
+                                <li>Progress assessments</li>
+                                <li>Which terms of the order are being complied with</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Context Section -->
+            <section id="context" class="section section-context">
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-file-text"></i></div>
+                    <h2>Context</h2>
+                </div>
+
+                <div class="item">
+                    <h3><span class="item-number">26</span> Factual Basis of Case</h3>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-search"></i> What to look for:</div>
+                        <div class="field-content">The story of what actually happened that led to the lawsuit</div>
+                    </div>
+                    <div class="field">
+                        <div class="field-label"><i class="fas fa-info-circle"></i> Simple explanation:</div>
+                        <div class="field-content">
+                            These are the real-world events that caused the legal dispute. Include:
+                            <ol>
+                                <li><strong>What happened:</strong> The sequence of events</li>
+                                <li><strong>Evidence:</strong> Documents, witnesses, or other proof mentioned</li>
+                                <li><strong>Background:</strong> Context that helps understand the situation</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="example-box">
+                        <strong>Example format:</strong> "The case involves [what happened], supported by [evidence], with background information such as [context]"
+                    </div>
+                </div>
+            </section>
+
+            <!-- General Tips Section -->
+            <div class="tips-section">
+                <h2><i class="fas fa-lightbulb"></i> General Tips for Annotators</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h4><i class="fas fa-check-double"></i> Be Thorough</h4>
+                        <p>Extract all relevant information for each item, even if it appears in multiple places</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4><i class="fas fa-ruler"></i> Use Exact Formats</h4>
+                        <p>When a specific format is required, follow it exactly</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4><i class="fas fa-search-plus"></i> Look for Variations</h4>
+                        <p>Legal language can vary - look for different ways the same concept might be expressed</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4><i class="fas fa-question-circle"></i> When in Doubt</h4>
+                        <p>If you're unsure whether something fits a category, include it with a note</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4><i class="fas fa-list-ol"></i> Multiple Instances</h4>
+                        <p>If there are multiple examples of an item (like multiple decrees), extract all of them</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4><i class="fas fa-book"></i> Context Matters</h4>
+                        <p>Always consider the context to ensure you're extracting the right information</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glossary Section -->
+            <div class="glossary">
+                <h2><i class="fas fa-book-open"></i> Common Legal Terms Quick Reference</h2>
+                <div class="glossary-grid">
+                    <div class="glossary-item">
+                        <div class="glossary-term">Plaintiff</div>
+                        <div class="glossary-definition">Person/entity bringing the lawsuit</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Defendant</div>
+                        <div class="glossary-definition">Person/entity being sued</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Motion</div>
+                        <div class="glossary-definition">Formal request to the court</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Decree</div>
+                        <div class="glossary-definition">Formal court order</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Injunction</div>
+                        <div class="glossary-definition">Court order to do or stop doing something</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Summary Judgment</div>
+                        <div class="glossary-definition">Decision without full trial</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Remand</div>
+                        <div class="glossary-definition">Send case back to lower court</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Affirm</div>
+                        <div class="glossary-definition">Higher court agrees with lower court</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Reverse</div>
+                        <div class="glossary-definition">Higher court disagrees with lower court</div>
+                    </div>
+                    <div class="glossary-item">
+                        <div class="glossary-term">Consent Decree</div>
+                        <div class="glossary-definition">Court order agreed to by both parties</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.opacity = '0.7';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.opacity = '1';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
