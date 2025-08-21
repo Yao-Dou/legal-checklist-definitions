@@ -142,16 +142,18 @@ This guide provides clear explanations of each legal checklist item to help anno
 
 ### 12. Court Rulings
 
-**What to look for:** Decisions the judge made on important requests (motions) during the case
+**What to look for:** Court rulings on any of the important filings (if applicable)
 
-**Simple explanation:** During a lawsuit, parties ask the court to make various decisions through "motions." Look for rulings on:
-- Motion to dismiss (asking to throw out the case)
-- Motion for summary judgment (asking to decide without trial)
-- Motion for preliminary injunction (asking for immediate action)
-- Motion for class certification (asking to proceed as class action)
+**Simple explanation:** This category corresponds with the "important filings" category—whenever an important filing is mentioned, you should also note what the ruling on that filing was (if there is one). Focus on whether the judge granted or denied:
+- Motion to dismiss
+- Motion for summary judgment  
+- Motion for preliminary injunction or temporary restraining order
+- Motion for class certification
 - Motion for attorneys' fees
 
-**Important:** Do NOT include amended complaints or statements of interest - these aren't rulings.
+**Important:** Do NOT include:
+- Amended complaints - these won't have rulings (include in "important filings" only)
+- Statements of interest - these won't have rulings (include in "important filings" only)
 
 ### 13. All Reported Opinions Cited with Shortened Bluebook Citation
 
@@ -292,14 +294,16 @@ This guide provides clear explanations of each legal checklist item to help anno
 
 ### 26. Factual Basis of Case
 
-**What to look for:** The story of what actually happened that led to the lawsuit
+**What to look for:** The facts or evidence upon which the case is built
 
-**Simple explanation:** These are the real-world events that caused the legal dispute. Include:
-1. **What happened:** The sequence of events
-2. **Evidence:** Documents, witnesses, or other proof mentioned
-3. **Background:** Context that helps understand the situation
+**Simple explanation:** These facts are essential in the legal process and are used to support legal claims or decisions. Include:
+1. **Details of relevant events:** What happened, when it happened, where it happened, and who was involved
+2. **Evidence:** Physical evidence, documentary records, witness testimonies, etc., that support these facts
+3. **Background information:** Context or explanatory facts that provide additional understanding
 
-**Example format:** "The case involves [what happened], supported by [evidence], with background information such as [context]"
+**Note:** The factual basis is crucial for determining the outcome of a case, as the judge or jury makes decisions based on the facts and the applicable legal principles.
+
+**Example format:** "The case involves [what/when/where/who details], supported by [evidence types], with background information such as [context]"
 
 ---
 
