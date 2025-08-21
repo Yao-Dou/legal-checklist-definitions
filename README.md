@@ -233,7 +233,9 @@ This guide provides clear explanations of each legal checklist item to help anno
 
 **Simple explanation:** The date when both sides formally agreed to end the lawsuit through negotiation rather than trial.
 
-**Example:** "Settlement reached on March 15, 2023"
+**Required format:** "[date]: [settlement description]"
+
+**Example:** "March 15, 2023: Settlement agreement reached between parties"
 
 ### 20. Significant Terms of Settlement
 
