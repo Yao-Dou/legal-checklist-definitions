@@ -208,6 +208,8 @@ This guide provides clear explanations of each legal checklist item to help anno
 - Things they must stop doing
 - Changes they must implement
 
+**Important:** Do NOT include timeframe information (dates, durations, deadlines) as these are captured separately in items 16 (Dates of All Decrees) and 18 (How Long Decrees Will Last).
+
 **Example:** "Defendant must implement new hiring practices and provide quarterly reports"
 
 ### 18. How Long Decrees Will Last
@@ -238,6 +240,8 @@ This guide provides clear explanations of each legal checklist item to help anno
 **What to look for:** The main agreements in the settlement
 
 **Simple explanation:** Similar to decree terms, but these are negotiated agreements. What did each side agree to do?
+
+**Important:** Do NOT include timeframe information (dates, durations, deadlines) as these are captured separately in items 19 (Date of Settlement) and 21 (How Long Settlement Will Last).
 
 **Example:** "Company agrees to pay $1 million and change workplace policies"
 
